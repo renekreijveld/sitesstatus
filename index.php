@@ -28,7 +28,7 @@ function cmp($a, $b) {
 	return strcmp($a->up.$a->name, $b->up.$b->name);
 }
 
-// setup Curl call, requeet json format
+// setup curl call, request json format
 $ch = curl_init(BASE_URL . '/sites' . '?limit=' . LIMIT);
 $options = array(
 	CURLOPT_RETURNTRANSFER => true,
@@ -41,6 +41,8 @@ $options = array(
 	),
 );
 curl_setopt_array($ch, ($options));
+
+// retrieve data
 $watchfuldata = json_decode(curl_exec($ch));
 $watchfuldata = $watchfuldata->msg;
 $sitesdata = "";
@@ -75,42 +77,44 @@ if (!$watchfuldata->error)
 			$cols = 0;
 		}
 		$sitesdata .= "<div class=\"col-md-6\">";
-		// site is up
-		if ($site->up == 2)
-		{
-			$color = "#449d44";
-		}
-		// site seems down
-		if ($site->up == 1)
-		{
-			$color = "#ec971f";
-			$sitesdown++;
-		}
+
 		// site is down
 		if ($site->up == 0)
 		{
 			$color = "#c9302c";
 			$sitesdown++;
+			$fa = "fa-times-circle";
 		}
-		$sitesdata .= "<h2 style=\"color:$color\">$site->name ";
 
+		// site seems down
+		if ($site->up == 1)
+		{
+			$color = "#ec971f";
+			$sitesdown++;
+			$fa = "fa-times-circle";
+		}
+
+		// site is up
 		if ($site->up == 2)
 		{
-			$sitesdata .= "<i class=\"fa fa-check-circle\"></i>";
+			$color = "#449d44";
+			$fa = "fa-check-circle";
 		}
-		else
-		{
-			$sitesdata .= "<i class=\"fa fa-times-circle\"></i>";
-		}
-		$sitesdata .= "</h2>";
+
+		$sitesdata .= "<h2 style=\"color:$color\">$site->name <i class=\"fa $fa\"></i></h2>";
+
 		$sitesdata .= "<p><i class=\"fa fa-home fa-fw\"></i><a href=\"$site->access_url\" target=\"_blank\">$site->access_url</a><br/>";
+
 		if ($site->published == 1)
 		{
 			$sitesdata .= "<i class=\"fa fa-bolt fa-fw\"></i>$site->ip<br/>";
 			$sitesdata .= "<i class=\"fa fa-joomla fa-fw\"></i>$site->j_version<br/>";			
 		}
+
 		$sitesdata .= "</p></div>";
+
 		$cols++;
+
 		if ($cols == 2) $sitesdata .= "</div>";
 	}
 	if ($cols == 1)
