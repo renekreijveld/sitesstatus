@@ -166,7 +166,7 @@ else
 				<?php if ($sitecount == -1) { ?>
 				<p>There was a problem retrieving websites status. Please try again later.</p>
 				<?php } else { ?>
-				<p>Number of websites <?php echo $sitecount; ?>, currently we have <?php echo $pctup;?>% up.</p>
+				<p>Number of websites: <strong><?php echo $sitecount; ?></strong>, currently we have <strong><?php echo $pctup;?>%</strong> up.</p>
 				<?php } ?>
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" style="width: <?php echo $pctup;?>%">
