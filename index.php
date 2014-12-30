@@ -43,12 +43,12 @@ $options = array(
 curl_setopt_array($ch, ($options));
 
 // retrieve data
-$watchfuldata = json_decode(curl_exec($ch));
-$watchfuldata = $watchfuldata->msg;
+$watchful = json_decode(curl_exec($ch));
+$watchfuldata = $watchful->msg;
 $sitesdata = "";
 
 // if no error proceed
-if (!$watchfuldata->error)
+if (!$watchful->error)
 {
 	$sitecount = $watchfuldata->total;
 	$sitesdown = 0;
@@ -167,7 +167,6 @@ else
 				<p>There was a problem retrieving websites status. Please try again later.</p>
 				<?php } else { ?>
 				<p>Number of websites: <strong><?php echo $sitecount; ?></strong>, currently we have <strong><?php echo $pctup;?>%</strong> up.</p>
-				<?php } ?>
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" style="width: <?php echo $pctup;?>%">
 						<span class="sr-only"><?php echo $pctup;?>% Up</span>
@@ -176,6 +175,7 @@ else
 						<span class="sr-only"><?php echo $pctdown;?>% Down</span>
 					</div>
 				</div>
+				<?php } ?>
 				<p><a class="btn btn-primary btn-lg" href="<?php echo getUrl();?>" role="button">Refresh page</a></p>
 			</div>
 		</div>
