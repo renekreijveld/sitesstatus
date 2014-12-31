@@ -23,7 +23,6 @@ function getUrl() {
 	return $url;
 }
 
-
 // setup curl call, request json format
 $ch = curl_init(BASE_URL . '/sites' . '?order=up-,name&fields=published,up,name,access_url,ip,j_version&limit=' . LIMIT);
 $options = array(
