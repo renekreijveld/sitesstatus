@@ -2,8 +2,8 @@
 /**
 * @package Site status
 * @author Rene Kreijveld, based on the original work of Watchful.li
-* @authorUrl https://www.gakijken.nl
-* @copyright (c) 2014, DSD business internet
+* @authorUrl https://about.me/renekreijveld
+* @copyright (c) 2014, Rene Kreijveld
 */
 
 // Configure error reporting to maximum for CLI output.
@@ -129,7 +129,7 @@ else
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="">
-		<meta name="author" content="DSD business internet">
+		<meta name="author" content="Rene Kreijveld">
 
 		<title>Websites Status</title>
 
