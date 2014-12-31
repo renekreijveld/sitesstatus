@@ -23,13 +23,9 @@ function getUrl() {
 	return $url;
 }
 
-// function for array sorting
-function cmp($a, $b) {
-	return strcmp($a->up.$a->name, $b->up.$b->name);
-}
 
 // setup curl call, request json format
-$ch = curl_init(BASE_URL . '/sites' . '?limit=' . LIMIT);
+$ch = curl_init(BASE_URL . '/sites' . '?order=up-,name&fields=published,up,name,access_url,ip,j_version&limit=' . LIMIT);
 $options = array(
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_SSL_VERIFYPEER => false,
@@ -64,8 +60,6 @@ if (!$watchful->error)
 		if ($site->up == 8) $site->up = 1;
 	}
 
-	// sort on upstatus and name
-	usort($sites, "cmp");
 
 	$cols = 2;
 	// process all sites, build html list of sites
