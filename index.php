@@ -11,7 +11,7 @@
 // ini_set('display_errors', 1);
 
 //Config
-define('API_KEY', 'enter your Watchfil.li API KEY here');
+define('API_KEY', 'Enter your Watchful.li API KEY here');
 define('BASE_URL', 'https://watchful.li/api/v1');
 define('LIMIT', '100');
 
