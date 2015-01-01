@@ -71,27 +71,17 @@ if (!$watchful->error)
 		}
 		$sitesdata .= "<div class=\"col-md-6\">";
 
-		// site is down
-		if ($site->up == 0)
-		{
-			$color = "#c9302c";
-			$sitesdown++;
-			$fa = "fa-times-circle";
-		}
-
-		// site seems down
-		if ($site->up == 1)
-		{
-			$color = "#ec971f";
-			$sitesdown++;
-			$fa = "fa-times-circle";
-		}
-
-		// site is up
+		// check if site is up
 		if ($site->up == 2)
 		{
+			// show in green
 			$color = "#449d44";
 			$fa = "fa-check-circle";
+		} else {
+			// it's not up, so show in red
+			$color = "#c9302c";
+			$sitesdown++;
+			$fa = "fa-times-circle";			
 		}
 
 		$sitesdata .= "<h2 style=\"color:$color\">$site->name <i class=\"fa $fa\"></i></h2>";
