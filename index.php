@@ -24,7 +24,7 @@ function getUrl() {
 }
 
 // setup curl call, request json format
-$ch = curl_init(BASE_URL . '/sites' . '?order=up-,name&fields=published,up,name,access_url,ip,j_version&limit=' . LIMIT);
+$ch = curl_init(BASE_URL . '/sites' . '?order=up,name&fields=published,up,name,access_url,ip,j_version&limit=' . LIMIT);
 $options = array(
 	CURLOPT_RETURNTRANSFER => true,
 	CURLOPT_SSL_VERIFYPEER => false,
@@ -142,9 +142,7 @@ else
 		<style type="text/css">
 			.jumbotron {padding: 16px 0}
 			.jumbotron h1 {margin-top: 10px}
-			@media (max-device-width: 480px) {
-				h2 {font-size: 24px;}
-			}
+			@media (max-device-width: 480px) {h2 {font-size: 24px;}}
 		</style>
 
 		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
